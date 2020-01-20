@@ -199,7 +199,55 @@ var fn2 = function(){
 
 ```
 
-    
+-  什么函数是回调函数？
+  - 经过定义的
+  - 没有调用的
+  - 最终执行了的
+- 常见的回调函数
+  - dom事件回调函数
+  - 定时器回调函数
+  - ajax请求回调函数（后面讲）
+  - 生命周期回调函数（后面讲） 
+  ```js
+  
+  <button id="btn" >点击</button>
+  <script>
+    document.getElementById('btn').onclick = function(){  //dom事件的回调函数
+    alert(this.innerHTML)}
+    //定时器回调
+    //超市定时器
+    //循环定时器
+    setTimeout(function(){  //定时器回调
+    alert('到时间了')}，2000)
+  </script>
+  ```
+- IIFE
+  - 全称
+    - Immediatly-Invoked Function Expression
+  - 作用
+    - 隐藏实现
+    - 不会污染外部环境
+    - 用它来编写js模板
+  ```js
+  (function(){ //匿名函数自调用
+  var a = 3;
+  console.log(a+3);
+  })()
+  console.log(a)
+  (function(){
+  var a =1;
+  function test(){
+  console.log(++a);}
+  window.$ = function(){ //向外暴露一个全局函数
+    return {
+        test:test
+     }
+  }
+  }){}
+  $().test() //1.$是一个函数 2.$执行后返回的是一个对象
+  ```
+  
+   
   
 
  
