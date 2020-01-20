@@ -129,6 +129,77 @@ console.log(a,typeof a,typeof a==='undefined',a===undefined) //undefined 'undefi
   - 释放内存
     - 局部变量：函数执行完自动释放
     - 对象：成为垃圾对象==>垃圾回收器回收
+- 什么是对象？
+  - 多个数据的封装体
+  - 用来保存多个数据的容体
+  - 一个对象代表现实中的一个事物
+- 为什么要用对象？
+  - 统一管理多个数据
+- 对象的组成
+  - 属性：属性名（字符串）和属性值想组成
+  - 方法：一种特别的属性
+- 如何访问对象内存的数据？
+  - .属性名  编码简单，有事不能用
+  - ['属性名']  编码麻烦，能通用
+```js
+    var p ={
+    name:'Tom',
+    age:12,
+    setName:function(name){
+        this.name = name
+     },
+     setAge.function(age){
+     this.age = age}
+    }
+    p.setName('Bob')
+    p['setAge'](12)
+    console.log(p.name,p['age']
+    )
+```
+- 什么时候必须使用['属性名']的方式
+  - 属性名包含特殊字符：- 空格
+  - 变量名不确定
+  
+  ```js
+  var p = {}
+  //1、给p对象添加一个属性：content type:text/json
+  //p.content-type = 'text/json'//不能用
+  p['content-type'] = 'text/json'
+  
+  //2、变量名不确定
+  var propName = 'myAge'
+  var value = 18
+  //p.proName = value
+  p['proName'] = value
+  console.log(p[propName])//18
+  
+  ```
+- 函数
+  - 什么是函数
+    - 实现特定功能的n条语句的封装体
+    - 只有函数是可以执行的，其他类型数据是不能执行的
+  - 为什么要使用函数
+    - 提高代码复用性
+    - 便于阅读交流
+  - 如何定义函数
+    - 函数声明
+    - 表达式
+  - 如何调用函数（执行）函数？
+    - text（）：直接调用
+    - obj.test():通过对象调用
+    - new test():new调用
+    - test.call/apply(obj):临时让test成为obj的方法进行调用
+```js
+function fn1(){ 、、函数声明
+
+}
+var fn2 = function(){
+}//表达式
+
+
+```
+
+    
   
 
  
