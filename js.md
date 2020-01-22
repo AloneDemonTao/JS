@@ -9,7 +9,9 @@ JS高级知识  尚硅谷讲解
 ----
 
 - hello-Js
-    - 1.JS数据类型
+  - 1.基础总结
+    -数据类型
+    
     - 2.兼容性（ES2015）
     - 3.变量
     - 4.函数——箭头函数
@@ -199,7 +201,7 @@ var fn2 = function(){
 
 ```
 
--  什么函数是回调函数？
+- 什么函数是回调函数？
   - 经过定义的
   - 没有调用的
   - 最终执行了的
@@ -245,6 +247,67 @@ var fn2 = function(){
   }
   }){}
   $().test() //1.$是一个函数 2.$执行后返回的是一个对象
+  ```
+- 函数中的this
+  - 任何函数本质上都是通过某个对象来调用的，如果没有直接指定就是window
+  - 所有函数内部都有一个变量this
+  - 它的值是调用函数的当前对象
+- 如何确定this的值
+  - test():window
+  - p.test():p
+  - new test():新创建的对象
+  - p.call(obj):obj
+  
+```js
+function Person(color){
+    this.color = color;
+    this.getColor = function(){
+        return this.color;
+    };
+    this.setColor = function (color){
+        this.color = color;
+    };
+}
+Person("red");    //this是window
+var p new = Person('yellow');    //this是p
+p.getColor();     //this是p
+var obj = {};
+p.setColor.call(obj,"black");  //this是obj
+var test = p.setColor;
+test();  //this是window
+function fun1(){
+    function fun2(){
+    console.log(this);
+    }
+    fun2();//this是window
+    };
+    func1();
+```
+- js分号问题
+  - js一条语句的后面可以不加分号
+  - 是否加分号是编码风格问题，没有应该补应该，只有你自己喜不喜欢
+  - 在下面2种1情况下，不加分号会有问题
+    - 小括号开头的前面一条语句
+    - 中方括号开头的前一条语句
+  - 解决方法：在行首加分号
+  - 强有力的例子：vue.js库
+  - 知乎热议：https://www.zhihu.com/question/20298345
+  ```js
+  var a = 3
+  ;(function(){})();这里必须加分号，可以加在行首；
+  
+   /*
+    错误理解
+    var a = 3(function(){})
+  */
+  
+  var b = 4
+  ;[1,3].forEach(function(){})这里也必须加分号，可以加在行首
+  
+  /*
+    错误理解
+    var b = 4[3].forEach(function(){})
+  */
   ```
   
    
